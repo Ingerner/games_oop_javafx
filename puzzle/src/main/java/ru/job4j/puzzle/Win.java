@@ -1,20 +1,47 @@
 package ru.job4j.puzzle;
 
 public class Win {
-    public static boolean check(int[][] board) {
+
+    public static boolean Horizontal(int[][] board) {
         boolean rsl = true;
-        for(int indexStr=0; indexStr<board.length; indexStr++) {
-            for(int indexStl=0; indexStl<board[indexStr].length; indexStl++) {
-                if(board[indexStr][indexStl] != 1){
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                if (board[i][j] != 1) {
                     rsl = false;
                     break;
                 }
-                if(indexStl == board[indexStr].length - 1) {
+                if (j == board[i].length - 1) {
                     return true;
                 }
             }
         }
-        //boolean rsl = true;
         return rsl;
+    }
+
+    public static boolean Vertical(int[][] board) {
+        boolean rsl=true;
+        for (int i=0; i<board.length; i++) {
+            for (int j=0; j<board[i].length; j++) {
+                if(board[i][j]==1){
+                    //перебераем строки и проверяем их на 1
+                    for (int n=i+1; n<board.length; n++) {
+                        if(board[n][j]!=1) {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+            }
+            return false; //если 1 в строке нет значит столюца быть не может завершаем метод
+        }
+        return rsl;
+    }
+
+    public static boolean check(int[][] board) {
+
+        boolean rez = Horizontal(board) || Vertical(board);
+
+        return rez;
+
     }
 }

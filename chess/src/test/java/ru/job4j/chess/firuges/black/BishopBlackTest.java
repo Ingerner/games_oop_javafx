@@ -13,7 +13,7 @@ public class BishopBlackTest {
     @Test
     public void position() {
         BishopBlack bishopBlack = new BishopBlack(Cell.A1);
-       Cell rez = bishopBlack.position();
+        Cell rez = bishopBlack.position();
         assertThat(rez, is(Cell.A1));
     }
 

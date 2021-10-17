@@ -7,7 +7,6 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-
 public class WinTest {
     @Test
     public void whenVerticalWin() {
@@ -57,7 +56,6 @@ public class WinTest {
         assertThat(Win.check(board), is(false));
     }
 
-
     @Test
     public void monoVertical() {
         int[][] board = {
@@ -68,7 +66,7 @@ public class WinTest {
                 {0, 0, 1, 0, 0},
         };
         int column = 2;
-        boolean rsl= Win.monoVertical(board, column);
+        boolean rsl = Win.monoVertical(board, column);
         Assert.assertTrue(rsl);
     }
 }

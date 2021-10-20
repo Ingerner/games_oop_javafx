@@ -26,12 +26,12 @@ public class BishopBlack implements Figure {
         int size = Math.abs(position.getX() - dest.getX());
         Cell[] steps = new Cell[size];
         int deltaX = dest.getX() - position.getX() > 0 ? 1 : -1;
-        int deltaY = ((dest.getY() - position.getY()) * (-1)) > 0 ? 1 : -1;
+        int deltaY = ((dest.getY() - position.getY())) > 0 ? 1 : -1;
         int x = position.getX();
         int y = position.getY();
         for (int index = 0; index < size; index++) {
             x = x + deltaX;
-            y = y - deltaY;
+            y = y + deltaY;
             steps[index] = Cell.findBy(x, y);
         }
         return steps;
@@ -39,12 +39,7 @@ public class BishopBlack implements Figure {
 
     public boolean isDiagonal(Cell source, Cell dest) {
         boolean rez = false;
-        int digX = source.getX() - dest.getX();
-        int digY = source.getY() - dest.getY();
-            if (Math.abs(digX) == Math.abs(digY)) {
-                rez = true;
-            }
-        return rez;
+        return Math.abs(source.getX() - dest.getX()) == Math.abs(source.getY() - dest.getY());
     }
 
     @Override
